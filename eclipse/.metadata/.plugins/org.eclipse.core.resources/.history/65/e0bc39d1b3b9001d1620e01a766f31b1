@@ -1,0 +1,49 @@
+package customclient.mods;
+
+import customclient.Mod;
+import net.minecraft.client.resources.I18n;
+
+public class PerspectiveMod extends Mod {
+
+	public boolean wasActive = false;
+	public int previousView;
+	public float lastYaw, lastPitch;
+	
+	@Override
+	public void OnUIRender() {
+		if(mc.gameSettings.keyPerspectiveModCC.isKeyDown() && !wasActive) {
+			wasActive = true;
+			previousView = mc.gameSettings.thirdPersonView;
+			lastYaw = mc.thePlayer.rotationYaw;
+			lastPitch = mc.thePlayer.rotationPitch;
+		}else if(mc.gameSettings.keyPerspectiveModCC.isKeyDown()) {
+			mc.thePlayer.rotationYaw = lastYaw;
+			mc.thePlayer.rotationPitch = lastPitch;
+		}else if(wasActive){
+			mc.gameSettings.thirdPersonView = 1;
+			mc.thePlayer.rotationYaw = lastYaw;
+			mc.thePlayer.rotationPitch = lastPitch;
+		}
+		wasActive = mc.gameSettings.keyPerspectiveModCC.isKeyDown();
+	}
+	
+	
+	public float getYaw() {
+		return this.wasActive ? lastYaw : mc.thePlayer.rotationYaw;
+	}
+	
+	public float getPitch() {
+		return this.wasActive ? lastPitch : mc.thePlayer.rotationPitch;
+	}
+	
+	
+	@Override
+	public String getName() {
+		return I18n.format("mod.perspective.name");
+	}
+	
+	@Override
+	public String getInternalName() {
+		return "Perspective Mod";
+	}
+}

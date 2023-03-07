@@ -1,0 +1,21 @@
+package customclient.mods;
+
+import customclient.Mod;
+import customclient.gui.settings.CustomizableBooleanValue;
+import net.minecraft.client.resources.I18n;
+
+public class CosmeticsMod extends Mod {
+	
+	@CustomizableBooleanValue(defaultValue = false, uiName = "")
+	public boolean showOwnCosmetics = true;
+	
+	@Override
+	public String getName() {
+		return I18n.format("mod.cosmetics.name");
+	}
+	
+	@Override
+	public String getInternalName() {
+		return "Cosmetics Mod";
+	}
+}

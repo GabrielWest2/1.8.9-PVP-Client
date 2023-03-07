@@ -1,0 +1,264 @@
+package customclient.file;
+
+import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
+
+import customclient.Main;
+import customclient.Mod;
+import customclient.RelativePosition;
+import customclient.file.deserialization.*;
+import customclient.file.deserialization.util.PositionDeserializer;
+import customclient.file.deserialization.util.SessionDeserializer;
+import customclient.file.deserialization.util.SessionSerializer;
+import customclient.mods.*;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.IImageBuffer;
+import net.minecraft.client.renderer.ImageBufferDownload;
+import net.minecraft.client.renderer.ThreadDownloadImageData;
+import net.minecraft.client.renderer.texture.ITextureObject;
+import net.minecraft.client.resources.DefaultPlayerSkin;
+import net.minecraft.client.resources.SkinManager;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Session;
+
+public class ClientFileManager {
+	public static Gson gson;
+	public static File rootDir = new File("Client");
+	public static File modsDir = new File(rootDir, "mods");
+	public static File accountDir = new File(rootDir, "account");
+	public static File cacheDir = new File(rootDir, "cache");
+	
+	public static void init() {
+		if(!rootDir.exists()) {
+			rootDir.mkdirs();
+		}
+		if(!modsDir.exists()) {
+			modsDir.mkdirs();
+		}
+		
+		if(!accountDir.exists()) {
+			accountDir.mkdirs();
+		}
+		
+		if(!cacheDir.exists()) {
+			cacheDir.mkdirs();
+		}
+		
+		ExclusionStrategy strategy = new ExclusionStrategy() {
+		    @Override
+		    public boolean shouldSkipClass(Class<?> clazz) {
+		        return false;
+		    }
+
+		    @Override
+		    public boolean shouldSkipField(FieldAttributes field) {
+		        return field.getAnnotation(Exclude.class) != null;
+		    }
+
+		};
+		gson = new GsonBuilder()
+				.addSerializationExclusionStrategy(strategy)
+				.registerTypeAdapter(Mod.class, new ModAdapter())
+				.registerTypeAdapter(Session.class, new SessionSerializer())
+				.registerTypeAdapter(Session.class, new SessionDeserializer())
+				.registerTypeAdapter(RelativePosition.class, new PositionDeserializer())
+				
+				.registerTypeAdapter(ArmorStatusMod.class, new ArmorStatusModDeserializer())
+				.registerTypeAdapter(BossBarMod.class, new BossBarModDeserializer())
+				.registerTypeAdapter(CoordinatesMod.class, new CoordinatesModDeserializer())
+				.registerTypeAdapter(CPSMod.class, new CPSModDeserializer())
+				.registerTypeAdapter(FPSMod.class, new FPSModDeserializer())
+				.registerTypeAdapter(KeystrokesMod.class, new KeystrokesModDeserializer())
+				.registerTypeAdapter(MinimalViewBobbingMod.class, new MinimalViewBobbingModDeserializer())
+				.registerTypeAdapter(ParticleMultiplier.class, new ParticleMultiplierDeserializer())
+				.registerTypeAdapter(TimeChangerMod.class, new TimeChangerModDeserializer())
+				.registerTypeAdapter(HypixelChatFilterMod.class, new HypixelChatFilterModDeserializer())
+				.registerTypeAdapter(NametagMod.class, new NametagModDeserializer())
+				.registerTypeAdapter(ScoreboardMod.class, new ScoreboardModDeserializer())
+				.registerTypeAdapter(ZoomMod.class, new ZoomModDeserializer())
+				.registerTypeAdapter(AutoGGMod.class, new AutoGGModDeserializer())
+				.registerTypeAdapter(CosmeticsMod.class, new CosmeticsModDeserializer())
+				.create();
+	}
+	
+	/**
+     * May download the skin if its not in the cache, can be passed a SkinManager#SkinAvailableCallback for handling
+     */
+    public static ResourceLocation loadCrafatarRender(Session session, final Type p_152789_2_, boolean overlay, float scale, final SkinManager.SkinAvailableCallback skinAvailableCallback)
+    {
+        final ResourceLocation resourcelocation = new ResourceLocation("Client/cache/" + session.getPlayerID()+".png");
+        ITextureObject itextureobject = Minecraft.getMinecraft().getSkinManager().textureManager.getTexture(resourcelocation);
+
+        if (itextureobject != null)
+        {
+            if (skinAvailableCallback != null)
+            {
+                skinAvailableCallback.skinAvailable(p_152789_2_, resourcelocation, null);
+            }
+        }
+        else
+        {
+            File file1 = new File(ClientFileManager.cacheDir, session.getPlayerID());
+            File file2 = new File(file1, session.getPlayerID()+".png");
+            final IImageBuffer iimagebuffer = p_152789_2_ == Type.SKIN ? new ImageBufferDownload() : null;
+            String url = "https://crafatar.com/renders/head/" + session.getPlayerID() + "?overlay="+(overlay?"true":"false")+"&scale="+scale;
+            
+            ThreadDownloadImageData threaddownloadimagedata = new ThreadDownloadImageData(file2, url, DefaultPlayerSkin.getDefaultSkinLegacy(), new IImageBuffer()
+            {
+                public BufferedImage parseUserSkin(BufferedImage image)
+                {
+                    if (iimagebuffer != null)
+                    {
+                        image = iimagebuffer.parseUserRender(image);
+                    }
+
+                    return image;
+                }
+                public void skinAvailable()
+                {
+                    if (iimagebuffer != null)
+                    {
+                        iimagebuffer.skinAvailable();
+                    }
+
+                    if (skinAvailableCallback != null)
+                    {
+                        skinAvailableCallback.skinAvailable(p_152789_2_, resourcelocation, null);
+                    }
+                }
+				@Override
+				public BufferedImage parseUserRender(BufferedImage image) {
+					// TODO Auto-generated method stub
+					return null;
+				}
+            });
+            Minecraft.getMinecraft().getSkinManager().textureManager.loadTexture(resourcelocation, threaddownloadimagedata);
+        }
+
+        return resourcelocation;
+    }
+
+	
+	
+	public static boolean saveSession(Session session) {
+		File f = new File(accountDir, session.getUsername()+ ".json");
+		System.out.println(f.getAbsolutePath());
+		try {
+			if(!f.exists()) {
+				f.createNewFile();
+			}
+			
+			FileOutputStream fout = new FileOutputStream(f);
+			
+			String json = gson.toJson(session, Session.class);
+			fout.write(json.getBytes());
+			fout.flush();
+			fout.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+		return false;
+	}
+	
+	public static Session loadSession(String filename) {
+		File f = new File(accountDir, filename);
+		System.out.println(f.getAbsolutePath());
+		try {
+			byte[] encoded;
+			encoded = Files.readAllBytes(Paths.get(f.getPath()));
+			String s = new String(encoded, Charset.defaultCharset());
+			Session session = gson.fromJson(s, Session.class);
+			return session;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+		return null;
+	}
+
+	
+	public static void writeModToJson(Mod mod) {
+		File f = new File(modsDir, getModFileName(mod));
+		try {
+			if(!f.exists()) {
+				f.createNewFile();
+			}
+			
+			FileOutputStream fout = new FileOutputStream(f);
+			
+			String json = gson.toJson(mod, Mod.class);
+			fout.write(json.getBytes());
+			fout.flush();
+			fout.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+	}
+	
+	public static <T extends Mod> T readModSetting(Class<T> claz) {
+		if(hasModSaveFile(claz)) {
+			try {
+				File f = new File(modsDir, getModFileName((Mod)claz.newInstance()));
+				byte[] encoded;
+				encoded = Files.readAllBytes(Paths.get(f.getPath()));
+				String s = new String(encoded, Charset.defaultCharset());
+				Mod m = gson.fromJson(s, claz);
+				
+				return(T)m;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return null;
+		
+	}
+	
+	public static <T extends Mod> boolean hasModSaveFile(Class<T> claz) {
+		File f = null;
+		
+		try {
+			f = new File(modsDir, getModFileName((Mod)claz.newInstance()));
+			return f.exists();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+
+
+	private static String getModFileName(Mod mod) {
+		return mod.getInternalName().replaceAll(" ", "_") +".json";
+	}
+}

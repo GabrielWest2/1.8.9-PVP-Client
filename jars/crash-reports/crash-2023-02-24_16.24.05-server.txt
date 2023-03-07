@@ -1,0 +1,94 @@
+---- Minecraft Crash Report ----
+// You're mean.
+
+Time: 2/24/23, 4:24 PM
+Description: Exception ticking world
+
+java.lang.OutOfMemoryError: Java heap space
+	at net.minecraft.util.BlockPos.add(BlockPos.java:66)
+	at net.minecraft.world.gen.feature.WorldGenTallGrass.generate(WorldGenTallGrass.java:32)
+	at net.minecraft.world.biome.BiomeDecorator.genDecorations(BiomeDecorator.java:263)
+	at net.minecraft.world.biome.BiomeDecorator.decorate(BiomeDecorator.java:174)
+	at net.minecraft.world.biome.BiomeGenBase.decorate(BiomeGenBase.java:424)
+	at net.minecraft.world.biome.BiomeGenForest.decorate(BiomeGenForest.java:164)
+	at net.minecraft.world.gen.ChunkProviderGenerate.populate(ChunkProviderGenerate.java:454)
+	at net.minecraft.world.gen.ChunkProviderServer.populate(ChunkProviderServer.java:234)
+	at net.minecraft.world.chunk.Chunk.populateChunk(Chunk.java:1177)
+	at net.minecraft.world.gen.ChunkProviderServer.loadChunk(ChunkProviderServer.java:138)
+	at net.minecraft.world.gen.ChunkProviderServer.provideChunk(ChunkProviderServer.java:151)
+	at net.minecraft.world.World.getChunkFromChunkCoords(World.java:342)
+	at net.minecraft.world.WorldServer.updateBlocks(WorldServer.java:360)
+	at net.minecraft.world.WorldServer.tick(WorldServer.java:214)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:764)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:685)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:272)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:564)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Stacktrace:
+	at net.minecraft.util.BlockPos.add(BlockPos.java:66)
+	at net.minecraft.world.gen.feature.WorldGenTallGrass.generate(WorldGenTallGrass.java:32)
+	at net.minecraft.world.biome.BiomeDecorator.genDecorations(BiomeDecorator.java:263)
+	at net.minecraft.world.biome.BiomeDecorator.decorate(BiomeDecorator.java:174)
+	at net.minecraft.world.biome.BiomeGenBase.decorate(BiomeGenBase.java:424)
+	at net.minecraft.world.biome.BiomeGenForest.decorate(BiomeGenForest.java:164)
+	at net.minecraft.world.gen.ChunkProviderGenerate.populate(ChunkProviderGenerate.java:454)
+	at net.minecraft.world.gen.ChunkProviderServer.populate(ChunkProviderServer.java:234)
+	at net.minecraft.world.chunk.Chunk.populateChunk(Chunk.java:1177)
+	at net.minecraft.world.gen.ChunkProviderServer.loadChunk(ChunkProviderServer.java:138)
+	at net.minecraft.world.gen.ChunkProviderServer.provideChunk(ChunkProviderServer.java:151)
+	at net.minecraft.world.World.getChunkFromChunkCoords(World.java:342)
+	at net.minecraft.world.WorldServer.updateBlocks(WorldServer.java:360)
+	at net.minecraft.world.WorldServer.tick(WorldServer.java:214)
+
+-- Affected level --
+Details:
+	Level name: New World
+	All players: 1 total; [EntityPlayerMP['ThatKingGuy'/282, l='New World', x=100000.50, y=85.48, z=1000000.50]]
+	Chunk stats: ServerChunkCache: 7000 Drop: 0
+	Level seed: -1982698116712620259
+	Level generator: ID 00 - default, ver 1. Features enabled: true
+	Level generator options: 
+	Level spawn location: 188.00,64.00,228.00 - World: (188,64,228), Chunk: (at 12,4,4 in 11,14; contains blocks 176,0,224 to 191,255,239), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 1269 game time, 1269 day time
+	Level dimension: 0
+	Level storage version: 0x04ABD - Anvil
+	Level weather: Rain time: 68536 (now: false), thunder time: 178227 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: true
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:764)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:685)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:272)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:564)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.8.9
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 17.0.6, Eclipse Adoptium
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Eclipse Adoptium
+	Memory: 20857744 bytes (19 MB) / 1073741824 bytes (1024 MB) up to 1073741824 bytes (1024 MB)
+	JVM Flags: 3 total; -Xmx1024M -Xms1024M -XX:+ShowCodeDetailsInExceptionMessages
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 95
+	Profiler Position: N/A (disabled)
+	Player Count: 1 / 8; [EntityPlayerMP['ThatKingGuy'/282, l='New World', x=100000.50, y=85.48, z=1000000.50]]
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Very likely; Jar signature invalidated
+	OptiFine Version: OptiFine_1.8.9_HD_U_L5
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 13
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 528.24
+	OpenGlRenderer: NVIDIA GeForce RTX 3060/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 12

@@ -1,0 +1,33 @@
+package customclient.mods;
+
+import customclient.Mod;
+import customclient.gui.settings.CustomizableBooleanValue;
+import net.minecraft.client.resources.I18n;
+
+public class PingMod extends Mod {
+	@CustomizableBooleanValue(defaultValue = true, uiName = "mod.ping.showHud")
+	public boolean showHud = true;
+	@CustomizableBooleanValue(defaultValue = true, uiName = "mod.ping.showBars")
+	public boolean showBars = true;
+	
+	@CustomizableBooleanValue(defaultValue = false, uiName = "mod.ping.showTab")
+	public boolean showInTab = false;
+	
+	@Override
+	public void OnUIRender() {
+		this.hudWidth = 30;
+		this.hudHeight = 30;
+		
+	}
+	
+	
+	@Override
+	public String getName() {
+		return I18n.format("mod.ping.name");
+	}
+	
+	@Override
+	public String getInternalName() {
+		return "Ping Mod";
+	}
+}

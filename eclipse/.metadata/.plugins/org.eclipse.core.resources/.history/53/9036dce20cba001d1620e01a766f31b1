@@ -1,0 +1,124 @@
+package customclient;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.lwjgl.opengl.Display;
+
+import customclient.cosmetics.Cosmetics;
+import customclient.database.ClientDatabaseManager;
+
+import customclient.file.ClientFileManager;
+import customclient.gui.layout.GuiScreenModLayout;
+import customclient.mods.*;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.util.ResourceLocation;
+
+public class Main {
+
+
+	public static final String version = "1.0.0";	
+	public static final String author = "gabe";
+	private List<Mod> mods = new ArrayList(); 
+	private Minecraft mc;
+	
+	public static Main INSTANCE = new Main();
+	private GuiScreenModLayout modLayout = new GuiScreenModLayout();
+	public ResourceLocation icon = null;
+	public ResourceLocation currentPlayerHead;
+	
+	public void startup() {
+		mc = Minecraft.getMinecraft();
+		Lang.load();
+		ClientFileManager.init();
+		ClientDatabaseManager.init();
+		Display.setTitle(I18n.format("client.name") + " " + Main.version);
+		System.out.println("[" + I18n.format("client.name") + " v"+ version + "] starting.");
+		mods = new ArrayList<Mod>() {{
+			add(new ArmorStatusMod());
+			add(new BossBarMod());
+			add(new CoordinatesMod());
+			add(new CPSMod());
+			add(new FPSMod());
+			add(new KeystrokesMod());
+			add(new MinimalViewBobbingMod());
+			add(new ParticleMultiplier());
+			add(new TimeChangerMod());
+			add(new HypixelChatFilterMod());
+			add(new NametagMod());
+			add(new ScoreboardMod());
+			add(new ZoomMod());
+			add(new AutoGGMod());
+			add(new PingMod());
+			add(new PerspectiveMod());
+		}};
+		loadMods();	
+		
+	}
+	
+	public void saveMods() {
+		for(Mod m : mods) {
+			ClientFileManager.writeModToJson(m);
+		}
+	}
+	
+	public void loadMods() {
+		int i = 0;
+		for(Mod m : mods) {
+			if(ClientFileManager.hasModSaveFile(m.getClass())) {
+				Mod loaded = ClientFileManager.readModSetting(m.getClass());
+				if(loaded != null)
+					mods.set(i++, loaded);
+				else
+					System.out.println("Failed to load save file for " + m.getName());
+			}
+			
+		}
+	}
+	
+	public void shutdown() {
+		saveMods();
+		System.out.println("[" + I18n.format("client.name") + " v"+ version + "] shutting down.");
+	}
+	
+	public List<Mod> getMods(){
+		return this.mods;
+	}
+	
+	public void ui() {
+		Cosmetics.update();
+		
+		if(mc.gameSettings.keyBindOpenModLayoutMenu.isPressed()) {
+			mc.displayGuiScreen(modLayout);
+		}
+		if(mc.currentScreen != modLayout) {
+			renderMods(false, 0, 0);
+		}
+	}
+	
+	
+	public void renderMods(boolean dummy, int mouseX, int mouseY) {
+		for(Mod m : mods) {
+			if(m.isEnabled()) {
+				if(dummy) {
+					m.RenderOutline(mouseX, mouseY);
+					m.OnDummyUIRender();
+				}else {
+					m.OnUIRender();
+				}
+			}
+		}
+	}
+
+	public <T extends Mod> T getMod(Class<T> clazz) {
+		for(Mod m : mods) {
+			if(m == null)
+				continue;
+			if(m.getClass().isAssignableFrom(clazz)) {
+				return (T)m;
+			}
+		}
+		return null;
+	}
+}

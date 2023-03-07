@@ -1,0 +1,17 @@
+package customclient.mods;
+
+import customclient.Mod;
+import customclient.gui.settings.CustomizableBooleanValue;
+
+public class PingMod extends Mod {
+	@CustomizableBooleanValue(defaultValue = false, uiName = "Show Bars")
+	public boolean showBars = false;
+	
+	@CustomizableBooleanValue(defaultValue = false, uiName = "Show Pings In Tablist")
+	public boolean showInTab = false;
+	
+	@Override
+	public void OnUIRender() {
+		
+	}
+}

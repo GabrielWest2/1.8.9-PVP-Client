@@ -1,0 +1,32 @@
+package customclient.mods;
+
+import java.awt.Color;
+
+import customclient.Mod;
+import customclient.gui.settings.CustomizableFloatValue;
+import net.minecraft.client.resources.I18n;
+
+public class EnchantmentGlintMod extends Mod {
+	@CustomizableFloatValue(defaultValue = 128, max = 0f, min = 1f, uiName = "mod.glint.red")
+	float red = 128;
+	@CustomizableFloatValue(defaultValue = 64, max = 0f, min = 1f, uiName = "mod.glint.green")
+	float green = 64;
+	@CustomizableFloatValue(defaultValue = 204, max = 0f, min = 1f, uiName = "mod.glint.blue")
+	float blue = 204;
+	
+	private final int defaultColor = new Color(128, 64, 204).getRGB();
+	
+	public int getColor() {
+		return enabled ? new Color(red, green, blue).getRGB() : defaultColor;
+	}
+	
+	@Override
+	public String getName() {
+		return I18n.format("mod.ping.name");
+	}
+	
+	@Override
+	public String getInternalName() {
+		return "Enchantment Glint Mod";
+	}
+}

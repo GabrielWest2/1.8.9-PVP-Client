@@ -1,0 +1,5 @@
+package customclient.acount;
+
+public class MetamaskLogin {
+
+}

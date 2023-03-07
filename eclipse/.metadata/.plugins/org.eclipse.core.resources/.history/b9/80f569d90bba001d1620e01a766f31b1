@@ -1,0 +1,7 @@
+package customclient.mods;
+
+import customclient.Mod;
+
+public class EnchantmentGlint extends Mod {
+
+}

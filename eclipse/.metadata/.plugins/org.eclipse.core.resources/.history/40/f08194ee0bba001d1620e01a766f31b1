@@ -1,0 +1,13 @@
+package customclient.mods;
+
+import customclient.Mod;
+import customclient.gui.settings.CustomizableFloatValue;
+
+public class EnchantmentGlint extends Mod {
+	@CustomizableFloatValue(defaultValue = 128, max = 0f, min = 1f, uiName = "mod.glint.red")
+	float red = 128;
+	@CustomizableFloatValue(defaultValue = 128, max = 0f, min = 1f, uiName = "mod.glint.green")
+	float green = 128;
+	@CustomizableFloatValue(defaultValue = 128, max = 0f, min = 1f, uiName = "mod.glint.blue")
+	float blue = 128;
+}

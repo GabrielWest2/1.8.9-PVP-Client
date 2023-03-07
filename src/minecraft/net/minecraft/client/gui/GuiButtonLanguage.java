@@ -1,0 +1,55 @@
+package net.minecraft.client.gui;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.ResourceLocation;
+
+public class GuiButtonLanguage extends GuiButton
+{
+
+	private ResourceLocation btn = new ResourceLocation("customclient/textures/gui/icon/languageButton.png");
+	private ResourceLocation btnbg = new ResourceLocation("customclient/textures/gui/transparentButtons.png");
+    public GuiButtonLanguage(int buttonID, int xPos, int yPos)
+    {
+        super(buttonID, xPos, yPos, 20, 20, "");
+    }
+
+    /**
+     * Draws this button to the screen.
+     */
+    public void drawButton(Minecraft mc, int mouseX, int mouseY)
+    {
+        if (this.visible)
+        {
+
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+            boolean flag = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+            mc.getTextureManager().bindTexture(btnbg);
+            drawTransparentBtn(this.xPosition, this.yPosition, this.width, this.height, flag);
+            
+
+
+            mc.getTextureManager().bindTexture(btn);
+            GlStateManager.enableBlend();
+            
+            float scale = 15f/256f;
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(scale, scale, 1);
+            this.drawTexturedModalRect((int)(this.xPosition+2.5)/scale, (int)(this.yPosition+2.5)/scale, 0, 0, 256, 256);
+            GlStateManager.popMatrix();
+        }
+    }
+    
+    
+    private void drawTransparentBtn(int x, int y, int w, int h, boolean hovered) {
+    	GlStateManager.pushMatrix();
+    	GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        GlStateManager.enableBlend();
+        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+        GlStateManager.blendFunc(770, 771);
+    	int leftWidth = w-(w/2);
+    	this.drawTexturedModalRect(x, y, 0, hovered ? 20 : 0, (w/2), h);
+    	this.drawTexturedModalRect(x + (int)(w/2), y, 200 - leftWidth, hovered ? 20 : 0, w/2, h);
+    	GlStateManager.popMatrix();
+    }
+}

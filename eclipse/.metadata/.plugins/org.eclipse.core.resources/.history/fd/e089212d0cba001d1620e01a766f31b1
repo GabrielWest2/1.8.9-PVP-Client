@@ -1,0 +1,61 @@
+client.name=GABE Client
+client.enabled=Enabled
+client.disabled=Disabled
+
+mod.armorstatus.name=Armor Status Mod
+
+mod.bossbar.name=Boss Bar Mod
+
+mod.coordinates.name=XYZ Mod
+
+mod.cps.name=CPS Mod
+
+mod.fps.name=FPS Mod
+
+mod.hypixelchatfilter.name=Hypixel Chat Filter
+mod.hypixelchatfilter.showTeamMessages=Show Team Messages
+mod.hypixelchatfilter.showFriendMessages=Show Friend Messages
+mod.hypixelchatfilter.showPartyMessages=Show Party Messages
+mod.hypixelchatfilter.showJoinMessages=Show Join Messages
+mod.hypixelchatfilter.showQuitMessages=Show Quit Messages
+mod.hypixelchatfilter.showChatMessages=Show Chat Messages
+mod.hypixelchatfilter.showOtherMessages=Show Other Messages
+
+mod.keystrokes.name=Keystrokes Mod
+
+mod.minviewbob.name=Minimal View Bobbing
+
+mod.nametag.name=Nametag Mod
+
+mod.particlemultiplier.name=Particle Multiplier
+mod.particlemultiplier.multiplier=Multiplier
+mod.particlemultiplier.randomness=Randomness
+mod.particlemultiplier.showSharp=Always Sharpness
+
+mod.scoreboard.name=Scoreboard Mod
+mod.scoreboard.nums=Show Numbers
+
+mod.timechanger.name=Time Changer Mod
+
+mod.weatherchanger.name=Weather Changer Mod
+
+mod.zoom.name=Zoom Mod
+
+mod.autogg.name=AutoGG Mod
+mod.autoGG.ggOnWin=GG On Win
+mod.autoGG.ggOnLoss=GG On Loss
+
+mod.cosmetics.name=Cosmetics Mod
+
+mod.ping.name=Ping Mod
+mod.ping.showHud=Show Hud
+mod.ping.showBars=Show Bars
+mod.ping.showTab=Tablist Pings
+
+
+mod.perspective.name=Perspective Mod
+
+key.categories.client=Custom Client
+key.modLayout=Mod Layout Menu
+key.timeChanger=Time Changer
+key.perspectiveMod=Perspective Mod

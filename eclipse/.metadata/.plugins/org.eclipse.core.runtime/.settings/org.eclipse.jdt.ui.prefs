@@ -1,0 +1,23 @@
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="net.minecraft.client.gui.Gui"><rhs name\="client.GuiButtonTransparent"/><rhs name\="customclient.gui.settings.GuiScreenModSettings"/><rhs name\="net.minecraft.client.gui.GuiMainMenu"/><rhs name\="customclient.gui.GuiScreenLogin"/><rhs name\="customclient.gui.GuiButtonOptions"/></lhs><lhs name\="net.minecraft.client.gui.GuiButton"><rhs name\="client.GuiButtonTransparent"/><rhs name\="customclient.gui.GuiButtonOptions"/></lhs><lhs name\="net.minecraft.client.gui.GuiYesNoCallback"><rhs name\="customclient.gui.settings.GuiScreenModSettings"/><rhs name\="net.minecraft.client.gui.GuiMainMenu"/><rhs name\="customclient.gui.GuiScreenLogin"/></lhs><lhs name\="net.minecraft.client.gui.GuiScreen"><rhs name\="customclient.gui.settings.GuiScreenModSettings"/><rhs name\="net.minecraft.client.gui.GuiMainMenu"/><rhs name\="customclient.gui.GuiScreenLogin"/></lhs><lhs name\="net.minecraft.entity.Entity"><rhs name\="net.minecraft.entity.passive.EntityHorse"/><rhs name\="net.minecraft.client.entity.EntityPlayerSP"/></lhs><lhs name\="net.minecraft.command.ICommandSender"><rhs name\="net.minecraft.entity.passive.EntityHorse"/><rhs name\="net.minecraft.client.entity.EntityPlayerSP"/></lhs><lhs name\="net.minecraft.entity.EntityLivingBase"><rhs name\="net.minecraft.entity.passive.EntityHorse"/><rhs name\="net.minecraft.client.entity.EntityPlayerSP"/></lhs><lhs name\="net.minecraft.client.gui.ScaledResolution"><rhs name\="net.minecraft.client.gui.ScaledResolution"/></lhs><lhs name\="net.minecraft.scoreboard.ScoreObjective"><rhs name\="net.minecraft.scoreboard.ScoreObjective"/></lhs><lhs name\="net.minecraft.util.ResourceLocation"><rhs name\="net.minecraft.util.ResourceLocation"/><rhs name\="customclient.cosmetics.AnimatedResourceLocation"/></lhs><lhs name\="net.minecraft.client.model.ModelRenderer"><rhs name\="net.minecraft.client.model.ModelRenderer"/></lhs><lhs name\="customclient.cosmetics.CosmeticModelBase"><rhs name\="customclient.cosmetics.LayerCosmeticsHat$ModelTopHat"/></lhs><lhs name\="net.minecraft.client.model.ModelBase"><rhs name\="customclient.cosmetics.LayerCosmeticsHat$ModelTopHat"/></lhs><lhs name\="customclient.cosmetics.LayerCosmeticsHat$ModelTopHat"><rhs name\="customclient.cosmetics.LayerCosmeticsHat$ModelTopHat"/></lhs><lhs name\="customclient.Mod"><rhs name\="customclient.mods.PingMod"/><rhs name\="customclient.mods.PerspectiveMod"/></lhs></history>
+content_assist_number_of_computers=12
+content_assist_proposals_background=255,255,255
+content_assist_proposals_foreground=0,0,0
+eclipse.preferences.version=1
+org.eclipse.jdt.internal.ui.navigator.layout=1
+org.eclipse.jdt.internal.ui.navigator.librariesnode=true
+org.eclipse.jdt.ui.formatterprofiles.version=22
+spelling_ignore_ampersand_in_properties=true
+spelling_ignore_digits=true
+spelling_ignore_java_strings=true
+spelling_ignore_mixed=true
+spelling_ignore_non_letters=true
+spelling_ignore_sentence=true
+spelling_ignore_single_letters=true
+spelling_ignore_upper=true
+spelling_ignore_urls=true
+spelling_locale_initialized=true
+spelling_user_dictionary=C\:\\Users\\Gabe\\Downloads\\PVPClient\\eclipse\\dict.txt
+spelling_user_dictionary_encoding=
+typefilter_migrated_2=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true

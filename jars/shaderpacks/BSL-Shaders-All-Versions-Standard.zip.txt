@@ -1,0 +1,14 @@
+#Mon Feb 27 09:55:59 EST 2023
+WavingGrass=false
+WavingLilypad=false
+WavingVines=false
+WavingCrops=false
+Sky_VanilaColor=true
+WavingLeaves=false
+Gloss=false
+WavingFire=false
+WavingFlowers=false
+Bloom=false
+WavingLava=false
+WavingWater=false
+Godrays=false
