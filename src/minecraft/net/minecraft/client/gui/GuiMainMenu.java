@@ -16,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -88,12 +89,13 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
 
     /** An array of all the paths to the panorama pictures. */
     private static final ResourceLocation[] titlePanoramaPaths = new ResourceLocation[] {
-    		new ResourceLocation("customclient/textures/panorama/panorama_0.png"), 
-    		new ResourceLocation("customclient/textures/panorama/panorama_1.png"), 
-    		new ResourceLocation("customclient/textures/panorama/panorama_2.png"),
-    		new ResourceLocation("customclient/textures/panorama/panorama_3.png"), 
-    		new ResourceLocation("customclient/textures/panorama/panorama_4.png"), 
-    		new ResourceLocation("customclient/textures/panorama/panorama_5.png")};
+    		new ResourceLocation("customclient/textures/panorama/npanorama_1.png"), 
+    		new ResourceLocation("customclient/textures/panorama/npanorama_1.png"), 
+    		new ResourceLocation("customclient/textures/panorama/npanorama_2.png"),
+    		new ResourceLocation("customclient/textures/panorama/npanorama_3.png"), 
+    		new ResourceLocation("customclient/textures/panorama/npanorama_4.png"), 
+    		new ResourceLocation("customclient/textures/panorama/npanorama_5.png")
+    		};
     public static final String field_96138_a = "Please click " + EnumChatFormatting.UNDERLINE + "here" + EnumChatFormatting.RESET + " for more information.";
     private int field_92024_r;
     private int field_92023_s;
@@ -435,6 +437,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         for (int k = 0; k < j; ++k)
         {
             GlStateManager.pushMatrix();
+
             float f = ((float)(k % i) / (float)i - 0.5F) / 64.0F;
             float f1 = ((float)(k / i) / (float)i - 0.5F) / 64.0F;
             float f2 = 0.0F;
@@ -557,6 +560,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         this.drawPanorama(p_73971_1_, p_73971_2_, p_73971_3_);
         this.rotateAndBlurSkybox(p_73971_3_);
         int i = 3;
+        
         CustomPanoramaProperties custompanoramaproperties = CustomPanorama.getCustomPanoramaProperties();
 
         if (custompanoramaproperties != null)
@@ -604,25 +608,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         int i1 = 16777215;
         int j1 = 0;
         int k1 = Integer.MIN_VALUE;
-        CustomPanoramaProperties custompanoramaproperties = CustomPanorama.getCustomPanoramaProperties();
 
-        if (custompanoramaproperties != null)
-        {
-            l = custompanoramaproperties.getOverlay1Top();
-            i1 = custompanoramaproperties.getOverlay1Bottom();
-            j1 = custompanoramaproperties.getOverlay2Top();
-            k1 = custompanoramaproperties.getOverlay2Bottom();
-        }
-
-        if (l != 0 || i1 != 0)
-        {
-            this.drawGradientRect(0, 0, this.width, this.height, l, i1);
-        }
-
-        if (j1 != 0 || k1 != 0)
-        {
-            this.drawGradientRect(0, 0, this.width, this.height, j1, k1);
-        }
 
         this.mc.getTextureManager().bindTexture(minecraftTitleTextures);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -632,13 +618,14 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         ScaledResolution sr = new ScaledResolution(mc);
         int x = sr.getScaledWidth();
         int y = sr.getScaledHeight();
-        this.mc.getTextureManager().bindTexture(minecraftTitleTextures);
         
+        
+        this.mc.getTextureManager().bindTexture(minecraftTitleTextures);
+        GlStateManager.color(1, 1, 1);
         GlStateManager.pushMatrix();
-        GlStateManager.scale(0.5, 0.5, 1);
+        GlStateManager.scale(1, (500f)/(700f), 1);
         GlStateManager.enableBlend();
-        this.drawTexturedModalRect(x-127, y/2, 0, 0, 512/2, 512/2);
-
+        this.drawTexturedModalRect(x/2-127, y/2-150, 0, 0, 512/2, 512/2);
         GlStateManager.popMatrix();
 
   
@@ -649,30 +636,8 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
             s = s + " Demo";
         }
 
-        if (Reflector.FMLCommonHandler_getBrandings.exists())
-        {
-            Object object = Reflector.call(Reflector.FMLCommonHandler_instance, new Object[0]);
-            List<String> list = Lists.<String>reverse((List)Reflector.call(object, Reflector.FMLCommonHandler_getBrandings, new Object[] {Boolean.valueOf(true)}));
 
-            for (int l1 = 0; l1 < list.size(); ++l1)
-            {
-                String s1 = (String)list.get(l1);
-
-                if (!Strings.isNullOrEmpty(s1))
-                {
-                    this.drawString(this.fontRendererObj, s1, 2, this.height - (10 + l1 * (this.fontRendererObj.FONT_HEIGHT + 1)), 16777215);
-                }
-            }
-
-            if (Reflector.ForgeHooksClient_renderMainMenu.exists())
-            {
-                Reflector.call(Reflector.ForgeHooksClient_renderMainMenu, new Object[] {this, this.fontRendererObj, Integer.valueOf(this.width), Integer.valueOf(this.height)});
-            }
-        }
-        else
-        {
-            this.drawString(this.fontRendererObj, s, 2, this.height - 10, -1);
-        }
+        this.drawString(this.fontRendererObj, s, 2, this.height - 10, -1);
 
         String s2 = "Copyright Mojang AB. Do not distribute!";
         this.drawString(this.fontRendererObj, s2, this.width - this.fontRendererObj.getStringWidth(s2) - 2, this.height - 10, -1);

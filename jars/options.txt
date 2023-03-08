@@ -8,13 +8,13 @@ guiScale:2
 particles:0
 bobView:true
 anaglyph3d:false
-maxFps:80
+maxFps:260
 fboEnable:true
 difficulty:2
 fancyGraphics:true
 ao:2
 renderClouds:false
-resourcePacks:["!    §b§l§oNaos §6§l§o16x.zip"]
+resourcePacks:[]
 incompatibleResourcePacks:[]
 lastServer:blockmania.com
 lang:en_US

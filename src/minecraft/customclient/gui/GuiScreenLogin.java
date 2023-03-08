@@ -97,13 +97,14 @@ public class GuiScreenLogin extends GuiScreen implements GuiYesNoCallback
 
     /** An array of all the paths to the panorama pictures. */
     private static final ResourceLocation[] titlePanoramaPaths = new ResourceLocation[] {
-    		new ResourceLocation("customclient/textures/panorama/seamless space_0.png"), 
-    		new ResourceLocation("customclient/textures/panorama/seamless space_0.png"), 
-    		new ResourceLocation("customclient/textures/panorama/seamless space_0.png"), 
-    		new ResourceLocation("customclient/textures/panorama/seamless space_0.png"), 
-    		new ResourceLocation("customclient/textures/panorama/seamless space_0.png"), 
-    		new ResourceLocation("customclient/textures/panorama/seamless space_0.png"),
-};
+    		new ResourceLocation("customclient/textures/panorama/npanorama_1.png"), 
+    		new ResourceLocation("customclient/textures/panorama/npanorama_1.png"), 
+    		new ResourceLocation("customclient/textures/panorama/npanorama_2.png"),
+    		new ResourceLocation("customclient/textures/panorama/npanorama_3.png"), 
+    		new ResourceLocation("customclient/textures/panorama/npanorama_4.png"), 
+    		new ResourceLocation("customclient/textures/panorama/npanorama_5.png")
+    		};
+    
     public static final String field_96138_a = "Please click " + EnumChatFormatting.UNDERLINE + "here" + EnumChatFormatting.RESET + " for more information.";
 
     private ResourceLocation backgroundTexture;
@@ -174,13 +175,14 @@ public class GuiScreenLogin extends GuiScreen implements GuiYesNoCallback
         }
 
     }
-
+    GuiButtonTransparent signin;
+    GuiButtonTransparent start;
 
     private void addButtons(int p_73969_1_, int p_73969_2_)
     {
 
-    	this.buttonList.add(new GuiButtonTransparent(2, this.width / 2 - 100 + 25, p_73969_1_ + p_73969_2_ + 100 -45, 150, 20, "Sign in with Microsoft"));
-        this.buttonList.add(new GuiButtonTransparent(3, this.width / 2-45, p_73969_1_ + p_73969_2_ + 115, 90, 20, "Get Started"));
+    	this.buttonList.add(signin=new GuiButtonTransparent(2, this.width / 2 - 100 + 25, p_73969_1_ + p_73969_2_ + 100 -45, 150, 20, "Sign in with Microsoft"));
+        this.buttonList.add(start=new GuiButtonTransparent(3, this.width / 2-45, p_73969_1_ + p_73969_2_ + 170, 90, 20, "Get Started"));
     }
 
     private boolean markSignedIn = false;
@@ -435,59 +437,42 @@ public class GuiScreenLogin extends GuiScreen implements GuiYesNoCallback
         int i1 = 16777215;
         int j1 = 0;
         int k1 = Integer.MIN_VALUE;
-        CustomPanoramaProperties custompanoramaproperties = CustomPanorama.getCustomPanoramaProperties();
 
-        if (custompanoramaproperties != null)
-        {
-            l = custompanoramaproperties.getOverlay1Top();
-            i1 = custompanoramaproperties.getOverlay1Bottom();
-            j1 = custompanoramaproperties.getOverlay2Top();
-            k1 = custompanoramaproperties.getOverlay2Bottom();
-        }
-
-        if (l != 0 || i1 != 0)
-        {
-            this.drawGradientRect(0, 0, this.width, this.height, l, i1);
-        }
-
-        if (j1 != 0 || k1 != 0)
-        {
-            this.drawGradientRect(0, 0, this.width, this.height, j1, k1);
-        }
 
         this.mc.getTextureManager().bindTexture(minecraftTitleTextures);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
 
         ScaledResolution sr = new ScaledResolution(mc);
-        int x = sr.getScaledWidth()/2;
-        int y = sr.getScaledHeight()/2+30;
-
-        int width = 300;
-        int height = 100;
-        this.drawRect(x-width/2, y-height/2,x+width/2, y+height/2, new Color(0, 0, 0, 60).getRGB());
         
-        String s3 = "Moonlite Client §e✯";
-        mc.fontRendererObj.drawString(s3, x - mc.fontRendererObj.getStringWidth(s3)/2, y-200, -1);
+        
+        int x = sr.getScaledWidth();
+        int y = sr.getScaledHeight();
+
+        this.mc.getTextureManager().bindTexture(minecraftTitleTextures);
+        GlStateManager.color(1, 1, 1);
+        GlStateManager.pushMatrix();
+        GlStateManager.scale(1, (500f)/(700f), 1);
+        GlStateManager.enableBlend();
+        this.drawTexturedModalRect(x/2-127, y/2-150, 0, 0, 512/2, 512/2);
+        GlStateManager.popMatrix();
+        
+        int width = 300;
+        int height = 125;
+        
+        int yOff = 10;
+        
+        this.drawRect(x/2-width/2, y/2+yOff,x/2+width/2, y/2+height+yOff, new Color(0, 0, 0, 125).getRGB());
+        signin.yPosition = y/2+yOff+10;
+        start.yPosition = y/2+height+yOff-25;
+        this.drawCenteredString(mc.fontRendererObj, "You'll need to migrate to a Microsoft account to log in.", x/2, y/2+height+yOff-50, Color.white.getRGB());
+
+    
         GlStateManager.pushMatrix();
         GlStateManager.scale(1, 0.5, 1);
-        Gui.drawHorizontalLine(x-75, x+75, (y-5)*2, Color.white.getRGB());
+        Gui.drawHorizontalLine(x/2-75, x/2+75, y+height+yOff-10, Color.white.getRGB());
         GlStateManager.popMatrix();
-        this.drawCenteredString(mc.fontRendererObj, "You'll need to migrate to a Microsoft account to log in.", x, y-2 + mc.fontRendererObj.FONT_HEIGHT, Color.white.getRGB());
-        this.drawCenteredString(mc.fontRendererObj, "Please log in", x, y-80 + mc.fontRendererObj.FONT_HEIGHT, Color.white.getRGB());
-        GlStateManager.pushMatrix();
         
-        x = sr.getScaledWidth();
-        y = sr.getScaledHeight() - 100;
-        this.mc.getTextureManager().bindTexture(minecraftTitleTextures);
-        GlStateManager.scale(0.5, 0.5, 1);
-        GlStateManager.disableLighting();
-        GlStateManager.color(1, 1, 1);
-        //this.drawTexturedModalRect(x-127, y/2-125, 0, 0, 512/2, 512/2);
-        
-        GlStateManager.popMatrix();
-
-  
         String s = "Minecraft 1.8.9";
 
         if (this.mc.isDemo())
@@ -495,31 +480,7 @@ public class GuiScreenLogin extends GuiScreen implements GuiYesNoCallback
             s = s + " Demo";
         }
 
-        if (Reflector.FMLCommonHandler_getBrandings.exists())
-        {
-            Object object = Reflector.call(Reflector.FMLCommonHandler_instance, new Object[0]);
-            List<String> list = Lists.<String>reverse((List)Reflector.call(object, Reflector.FMLCommonHandler_getBrandings, new Object[] {Boolean.valueOf(true)}));
-
-            for (int l1 = 0; l1 < list.size(); ++l1)
-            {
-                String s1 = (String)list.get(l1);
-
-                if (!Strings.isNullOrEmpty(s1))
-                {
-                    this.drawString(this.fontRendererObj, s1, 2, this.height - (10 + l1 * (this.fontRendererObj.FONT_HEIGHT + 1)), 16777215);
-                }
-            }
-
-            if (Reflector.ForgeHooksClient_renderMainMenu.exists())
-            {
-                Reflector.call(Reflector.ForgeHooksClient_renderMainMenu, new Object[] {this, this.fontRendererObj, Integer.valueOf(this.width), Integer.valueOf(this.height)});
-            }
-        }
-        else
-        {
-            this.drawString(this.fontRendererObj, s, 2, this.height - 10, -1);
-        }
-
+        this.drawString(this.fontRendererObj, s, 2, this.height - 10, -1);
         String s2 = "Copyright Mojang AB. Do not distribute!";
         this.drawString(this.fontRendererObj, s2, this.width - this.fontRendererObj.getStringWidth(s2) - 2, this.height - 10, -1);
 
