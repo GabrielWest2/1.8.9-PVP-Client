@@ -1,7 +1,5 @@
 eclipse
 eclipse/.metadata/.log
-eclipse/.metadata/.log
-eclipse/.metadata/.log
 eclipse/.metadata/.plugins/org.eclipse.core.resources/.projects/.org.eclipse.egit.core.cmp/.location
 eclipse/.metadata/.plugins/org.eclipse.core.resources/.projects/Client/.markers.snap
 eclipse/.metadata/.plugins/org.eclipse.core.resources/.projects/Client/.syncinfo.snap
@@ -15,5 +13,5 @@ eclipse/.metadata/.plugins/org.eclipse.jdt.core/2403487921.index
 eclipse/.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt
 eclipse/.metadata/.plugins/org.eclipse.m2e.logback/0.log
 eclipse/.metadata/version.ini
-
-eclipse/.metadata/.log
+jars/logs
+jars/Client

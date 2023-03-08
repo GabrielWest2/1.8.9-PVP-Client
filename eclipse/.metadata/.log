@@ -5534,3 +5534,4 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.core.resources 2 10035 2023-03-07 18:46:12.696
 !MESSAGE The workspace will exit with unsaved changes in this session.
+
