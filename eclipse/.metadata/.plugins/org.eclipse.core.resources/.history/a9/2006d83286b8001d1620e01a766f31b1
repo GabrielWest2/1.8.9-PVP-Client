@@ -1,7 +1,0 @@
-package customclient.mods;
-
-import customclient.Mod;
-
-public class PingMod extends Mod {
-
-}

@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="keyDown"/>
+		<item key="selection" value="m.is"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="m.is"/>
+			<item value="font"/>
+			<item value="text"/>
+			<item value="\r\n&quot;"/>
+			<item value="+ &quot;"/>
+			<item value="Moon"/>
 			<item value="mc.gameSettings.keyPerspectiveModCC.isKeyDown()"/>
 			<item value="inGam"/>
 			<item value="entity.rotationYaw"/>
@@ -17,14 +23,10 @@
 			<item value="entity.prevRotationYaw"/>
 			<item value="Main.INSTANCE.getMod(PerspectiveMod.class).getYaw()"/>
 			<item value="pitch="/>
-			<item value="pitch ="/>
-			<item value="head = "/>
-			<item value="rotationPitch"/>
-			<item value="pitch"/>
-			<item value=".getPit"/>
-			<item value="iNGameh"/>
 		</list>
 		<list key="replacehistory">
+			<item value="&quot;);"/>
+			<item value="strs.add(&quot;"/>
 			<item value="keyDown"/>
 			<item value="Main.INSTANCE.getMod(PerspectiveMod.class).getYaw()"/>
 			<item value="Main.INSTANCE.getMod(PerspectiveMod.class).getPitch()"/>

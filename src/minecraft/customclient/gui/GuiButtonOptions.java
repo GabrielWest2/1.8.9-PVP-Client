@@ -36,7 +36,13 @@ public class GuiButtonOptions extends GuiButton
             float scale = 15f/256f;
             GlStateManager.pushMatrix();
             GlStateManager.scale(scale, scale, 1);
+            if(flag) {
+            	GlStateManager.color(1f, 1f, 0.55f);
+            }else {
+            	GlStateManager.color(1, 1, 1);
+            }
             this.drawTexturedModalRect((int)(this.xPosition+2.5)/scale, (int)(this.yPosition+2.5)/scale, 0, 0, 256, 256);
+            GlStateManager.color(1, 1, 1);
             GlStateManager.popMatrix();
         }
     }

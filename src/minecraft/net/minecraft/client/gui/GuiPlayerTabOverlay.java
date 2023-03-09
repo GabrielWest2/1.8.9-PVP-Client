@@ -280,7 +280,7 @@ public class GuiPlayerTabOverlay extends Gui
         this.drawTexturedModalRect(p_175245_2_ + p_175245_1_ - 11, p_175245_3_, 0 + i * 10, 176 + j * 8, 10, 8);
         PingMod m = Main.INSTANCE.getMod(PingMod.class);
         if(m != null && m.isEnabled() && m.showInTab)
-        	this.drawString(mc.fontRendererObj, "§3"+networkPlayerInfoIn.getResponseTime(), p_175245_2_ + p_175245_1_+11 - mc.fontRendererObj.getStringWidth(networkPlayerInfoIn.getResponseTime()+""),  p_175245_3_, -1);
+        	this.drawString(mc.fontRendererObj, "§a"+networkPlayerInfoIn.getResponseTime(), p_175245_2_ + p_175245_1_+11 - mc.fontRendererObj.getStringWidth(networkPlayerInfoIn.getResponseTime()+"")-24,  p_175245_3_, -1);
         this.zLevel -= 100.0F;
     }
 

@@ -3,8 +3,6 @@
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.optifine{Lang.java[Lang" modifiers="1" timestamp="1595013513768"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client.main{Main.java[Main" modifiers="1" timestamp="1677287039080"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client.gui{GuiButton.java[GuiButton" modifiers="1" timestamp="1595013496323"/>
-    <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;customclient.gui{GuiButtonTransparent.java[GuiButtonTransparent" modifiers="1" timestamp="1677331180982"/>
-    <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client.gui{GuiButtonLanguage.java[GuiButtonLanguage" modifiers="1" timestamp="1677290866973"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client.gui{GuiResourcePackList.java[GuiResourcePackList" modifiers="1025" timestamp="1677293944589"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client.gui{GuiOptionButton.java[GuiOptionButton" modifiers="1" timestamp="1595013496806"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client.gui{GuiIngameMenu.java[GuiIngameMenu" modifiers="1" timestamp="1677299271210"/>
@@ -17,7 +15,6 @@
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;customclient.mods{ScoreboardMod.java[ScoreboardMod" modifiers="1" timestamp="1677434992110"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.entity.player{EntityPlayer.java[EntityPlayer" modifiers="1025" timestamp="1677437761904"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client.renderer.entity{RendererLivingEntity.java[RendererLivingEntity" modifiers="1025" timestamp="1677442037785"/>
-    <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;customclient.gui{GuiScreenLogin.java[GuiScreenLogin" modifiers="1" timestamp="1677704023713"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client.gui{GuiIngame.java[GuiIngame" modifiers="1" timestamp="1677712807335"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;customclient.mods{KeystrokesMod.java[KeystrokesMod" modifiers="1" timestamp="1677283625792"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client{Minecraft.java[Minecraft" modifiers="1" timestamp="1677797929658"/>
@@ -25,10 +22,17 @@
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client.renderer.entity.layers{LayerCape.java[LayerCape" modifiers="1" timestamp="1677459316674"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client.settings{GameSettings.java[GameSettings" modifiers="1" timestamp="1677810706596"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client.renderer{EntityRenderer.java[EntityRenderer" modifiers="1" timestamp="1677878345034"/>
-    <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;customclient.gui{GuiButtonOptions.java[GuiButtonOptions" modifiers="1" timestamp="1677292154288"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;customclient.gui.settings{GuiButtonSettings.java[GuiButtonSettings" modifiers="1" timestamp="1677879971409"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;customclient{Mod.java[Mod" modifiers="1" timestamp="1677283625836"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client.renderer.entity{RenderItem.java[RenderItem" modifiers="1" timestamp="1677879968733"/>
-    <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client.gui{GuiMainMenu.java[GuiMainMenu" modifiers="1" timestamp="1677383892452"/>
     <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;customclient.cosmetics{Cosmetics.java[Cosmetics[Cape" modifiers="1" timestamp="1677461274868"/>
+    <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client.gui{GuiMainMenu.java[GuiMainMenu" modifiers="1" timestamp="1678310165266"/>
+    <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;customclient.gui{GuiButtonAnimatedUser.java[GuiButtonAnimatedUser" modifiers="1" timestamp="1678240795330"/>
+    <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;customclient.gui{GuiScreenLogin.java[GuiScreenLogin" modifiers="1" timestamp="1678310154339"/>
+    <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;customclient.gui{GuiButtonOptions.java[GuiButtonOptions" modifiers="1" timestamp="1678313875958"/>
+    <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;customclient.gui{GuiButtonTransparent.java[GuiButtonTransparent" modifiers="1" timestamp="1677331180982"/>
+    <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;customclient.mods{PingMod.java[PingMod" modifiers="1" timestamp="1677843065171"/>
+    <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;net.minecraft.client.gui{GuiButtonLanguage.java[GuiButtonLanguage" modifiers="1" timestamp="1678313960112"/>
+    <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;customclient.gui{GuiButtonQuit.java[GuiButtonQuit" modifiers="1" timestamp="1678314034389"/>
+    <typeInfo handle="=Client/src=/optional=/true=/=/maven.pomderived=/true=/&lt;customclient.gui{GuiButtonCosmetics.java[GuiButtonCosmetics" modifiers="1" timestamp="1678314070624"/>
 </typeInfoHistroy>

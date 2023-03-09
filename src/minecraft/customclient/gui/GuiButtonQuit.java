@@ -35,8 +35,14 @@ public class GuiButtonQuit extends GuiButton
             
             float scale = 15f/256f;
             GlStateManager.pushMatrix();
+            if(flag) {
+            	GlStateManager.color(1f, 0.45f, 0.45f);
+            }else {
+            	GlStateManager.color(1, 1, 1);
+            }
             GlStateManager.scale(scale, scale, 1);
             this.drawTexturedModalRect((int)(this.xPosition+2.5)/scale, (int)(this.yPosition+2.5)/scale, 0, 0, 256, 256);
+            GlStateManager.color(1, 1, 1);
             GlStateManager.popMatrix();
         }
     }

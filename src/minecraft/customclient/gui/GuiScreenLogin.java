@@ -93,7 +93,7 @@ public class GuiScreenLogin extends GuiScreen implements GuiYesNoCallback
 
 
 
-    private static final ResourceLocation minecraftTitleTextures = new ResourceLocation("customclient/textures/gui/icon/lunar.png");
+    private static final ResourceLocation minecraftTitleTextures = new ResourceLocation("customclient/textures/gui/icon/client.png");
 
     /** An array of all the paths to the panorama pictures. */
     private static final ResourceLocation[] titlePanoramaPaths = new ResourceLocation[] {

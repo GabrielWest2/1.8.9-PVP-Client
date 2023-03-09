@@ -85,7 +85,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
     /** Link to the Mojang Support about minimum requirements */
     private String openGLWarningLink;
     private static final ResourceLocation splashTexts = new ResourceLocation("texts/splashes.txt");
-    private static final ResourceLocation minecraftTitleTextures = new ResourceLocation("customclient/textures/gui/icon/lunar.png");
+    private static final ResourceLocation minecraftTitleTextures = new ResourceLocation("customclient/textures/gui/icon/client.png");
 
     /** An array of all the paths to the panorama pictures. */
     private static final ResourceLocation[] titlePanoramaPaths = new ResourceLocation[] {

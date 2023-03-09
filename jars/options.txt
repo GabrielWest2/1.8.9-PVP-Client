@@ -10,11 +10,11 @@ bobView:true
 anaglyph3d:false
 maxFps:260
 fboEnable:true
-difficulty:2
+difficulty:3
 fancyGraphics:true
 ao:2
 renderClouds:false
-resourcePacks:[]
+resourcePacks:["!    §b§l§oNaos §6§l§o16x.zip"]
 incompatibleResourcePacks:[]
 lastServer:blockmania.com
 lang:en_US
@@ -25,7 +25,7 @@ chatLinksPrompt:true
 chatOpacity:1.0
 snooperEnabled:true
 fullscreen:true
-enableVsync:false
+enableVsync:true
 useVbo:false
 hideServerAddress:false
 advancedItemTooltips:false

@@ -16,7 +16,6 @@
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="com.mojang.util.UUIDTypeAdapter"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="java.util.UUID"/>
@@ -47,7 +46,6 @@
     <fullyQualifiedTypeName name="customclient.mods.PingMod"/>
     <fullyQualifiedTypeName name="customclient.file.deserialization.PingModDeserializer"/>
     <fullyQualifiedTypeName name="customclient.gui.GuiButtonOptions"/>
-    <fullyQualifiedTypeName name="net.minecraft.client.renderer.GlStateManager"/>
     <fullyQualifiedTypeName name="customclient.mods.HypixelChatFilterMod"/>
     <fullyQualifiedTypeName name="org.lwjgl.opengl.Display"/>
     <fullyQualifiedTypeName name="customclient.gui.settings.CustomizableFloatValue"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="org.web3j.eth2.api.BeaconNodeService"/>
     <fullyQualifiedTypeName name="org.web3j.eth2.api.BeaconNodeClientFactory"/>
     <fullyQualifiedTypeName name="org.web3j.eth2.api.schema.NamedBlockId"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="net.minecraft.client.renderer.GlStateManager"/>
 </qualifiedTypeNameHistroy>

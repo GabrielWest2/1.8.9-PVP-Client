@@ -1,1 +1,1 @@
-{"position":{"x":10,"y":10,"anchor":"TOP_LEFT"},"enabled":false,"show_team_messages":true,"show_friend_messages":true,"show_party_messages":true,"show_join_messages":false,"show_quit_messages":false,"show_chat_messages":false,"show_other_messages":false}
+{"position":{"x":10,"y":10,"anchor":"TOP_LEFT"},"enabled":true,"show_team_messages":true,"show_friend_messages":true,"show_party_messages":true,"show_join_messages":false,"show_quit_messages":false,"show_chat_messages":true,"show_other_messages":true}
